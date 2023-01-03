@@ -67,7 +67,8 @@ const MDXEditor: React.FC<MDXEditorProps> = ({ content, isParsed = false }) => {
         ) as HTMLElement
 
         const minWidth = 300
-        const maxWidth = window.innerWidth / 2
+        // For just two columns uses 1.5, for three, uses 2
+        const maxWidth = window.innerWidth / 1.5
 
         const clientX = (container?.clientWidth ?? 0) - event.clientX
 

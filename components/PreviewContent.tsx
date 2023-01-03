@@ -28,7 +28,7 @@ const PreviewContent: React.FC<IPreviewContentProps> = ({ content }) => {
         backgroundColor: '#FAFAFA',
         padding: 20,
         overflow: 'scroll',
-        wordBreak: 'break-all',
+        wordBreak: 'break-word',
         whiteSpace: 'pre-wrap',
         resize: 'none',
         minWidth: 300,
