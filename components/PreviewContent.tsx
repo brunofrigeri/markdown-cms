@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
+import remarkGfm from 'remark-gfm'
 
 interface IPreviewContentProps {
   content: string
@@ -13,7 +14,9 @@ const PreviewContent: React.FC<IPreviewContentProps> = ({ content }) => {
     const compileToString = async () => {
       const source = await remark()
         .use(remarkHtml, { sanitize: false, quoteSmart: true })
+        .use(remarkGfm)
         .process(content)
+
       setCompiledContent(source.toString())
     }
 
