@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
 import remarkGfm from 'remark-gfm'
+import { useLivePrism } from '../hooks/useLivePrism'
 
 interface IPreviewContentProps {
   content: string
@@ -9,6 +10,7 @@ interface IPreviewContentProps {
 
 const PreviewContent: React.FC<IPreviewContentProps> = ({ content }) => {
   const [compiledContent, setCompiledContent] = useState<string>('')
+  useLivePrism(compiledContent)
 
   useEffect(() => {
     const compileToString = async () => {
@@ -30,7 +32,8 @@ const PreviewContent: React.FC<IPreviewContentProps> = ({ content }) => {
         flex: 1,
         backgroundColor: '#FAFAFA',
         padding: 20,
-        overflow: 'scroll',
+        overflowY: 'scroll',
+        msOverflowStyle: 'none',
         wordBreak: 'break-word',
         whiteSpace: 'pre-wrap',
         resize: 'none',
