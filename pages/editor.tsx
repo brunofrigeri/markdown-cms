@@ -1,4 +1,4 @@
-import { GetServerSideProps, GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import React, { useEffect, useState } from 'react'
 import FileManager from '../components/FileManager'
 import MDXTextArea from '../components/MDXTextArea'
