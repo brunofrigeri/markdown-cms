@@ -1,4 +1,6 @@
+import { Post } from '../helpers/types'
+
 export type File = {
-  slug: string
-  content: string
+  draft: boolean
+  content: Post
 }

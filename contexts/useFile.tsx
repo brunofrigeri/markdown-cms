@@ -5,8 +5,25 @@ import { useContext } from 'react'
 import { FileContext } from './FileProvider'
 
 export const useFile = () => {
-  const { files, currentFile, createNewFile, updateFileContent } =
-    useContext(FileContext)
+  const {
+    files,
+    currentFile,
+    createNewFile,
+    updateFileContent,
+    shouldShowExplorer,
+    toggleExplorer,
+    saveFiles,
+    setCurrentFile,
+  } = useContext(FileContext)
 
-  return { files, currentFile, createNewFile, updateFileContent }
+  return {
+    files,
+    currentFile,
+    createNewFile,
+    updateFileContent,
+    shouldShowExplorer,
+    toggleExplorer,
+    saveFiles,
+    setCurrentFile,
+  }
 }
