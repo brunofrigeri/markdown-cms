@@ -25,13 +25,15 @@ export const useMouseMove = () => {
         const filesElement = container?.querySelector('#files') as HTMLElement
 
         const minWidth = 200
-        const maxWidth = window.innerWidth / 2
+        const maxWidth = window.innerWidth / 3.5
 
         if (filesElement) {
           filesElement.style.width =
             (event.clientX > maxWidth
               ? maxWidth
-              : Math.max(event.clientX, minWidth)) + 'px'
+              : Math.max(event.clientX, minWidth)) -
+            80 + // 80px is the size of the SideBar, so I needed to decrease from the onMouseMove hook
+            'px'
           filesElement.style.flexGrow = '0'
         }
       } else if (isDraggingRight) {
