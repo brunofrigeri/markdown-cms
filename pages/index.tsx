@@ -1,35 +1,39 @@
 import { GetStaticProps } from 'next'
+import Link from 'next/link'
 import React from 'react'
 import Container from '../containers/Container'
-import { useFile } from '../contexts/useFile'
 import { getAllPosts } from '../helpers/getAllPosts'
 import { Post } from '../helpers/types'
+import { FaArrowRight } from 'react-icons/fa'
 
 interface IDashboardProps {
   posts: Post[]
 }
 
 const Dashboard = ({ posts = [] }: IDashboardProps) => {
-  const { toggleExplorer } = useFile()
-
   return (
-    <Container
-      shouldShowSidebar
-      sideBarProps={{ onToggleExplorer: toggleExplorer }}
-    >
-      <div className="bg-white w-full h-full p-5">
-        <h1 className="text-black">Posts</h1>
-        <div className="grid md:grid-cols-3 grid-cols-2">
+    <Container className="overflow-y-auto bg-white mt-14">
+      <div className="p-5">
+        <div className="flex flex-row justify-between mb-4">
+          <h1 className="text-black">Posts</h1>
+
+          <button className="bg-blue px-2 rounded-md py-0 text-white text-semibold">
+            Create Post
+          </button>
+        </div>
+        <div className="grid max-sm:grid-cols-2 grid-cols-3 gap-4">
           {posts.map((post) => (
-            <div
-              className="flex flex-col border rounded-md bg-gray m-4 p-4"
+            <Link
+              href={`/editor/${post.slug}`}
+              className={`flex flex-col justify-between border rounded-md bg-gray p-4`}
               key={post.key}
             >
-              <h3 className="text-black">{post.title}</h3>
-              <div className="py-5">
+              <div>
+                <h3 className="text-black mb-4">{post.title}</h3>
                 <p className="text-black">{post.date}</p>
               </div>
-            </div>
+              <FaArrowRight className="self-end" color="black" />
+            </Link>
           ))}
         </div>
       </div>

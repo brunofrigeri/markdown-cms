@@ -1,12 +1,7 @@
 import '../styles/globals.css'
 import '../styles/prism.css'
 import type { AppProps } from 'next/app'
-import FileProvider from '../contexts/FileProvider'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <FileProvider>
-      <Component {...pageProps} />
-    </FileProvider>
-  )
+  return <Component {...pageProps} />
 }
