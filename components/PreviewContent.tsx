@@ -28,23 +28,10 @@ const PreviewContent: React.FC<IPreviewContentProps> = ({ content }) => {
   return (
     <div
       id="preview"
-      style={{
-        flex: 1,
-        backgroundColor: '#FAFAFA',
-        padding: 20,
-        overflowY: 'scroll',
-        msOverflowStyle: 'none',
-        wordBreak: 'break-word',
-        whiteSpace: 'pre-wrap',
-        resize: 'none',
-        minWidth: 300,
-      }}
+      className="flex-1 min-w-75 pt-5 px-5 overflow-y-auto whitespace-pre-wrap break-word bg-previewContentBg"
     >
       <article
-        className="prose"
-        style={{
-          color: 'black',
-        }}
+        className="prose text-black"
         dangerouslySetInnerHTML={{ __html: compiledContent }}
       />
     </div>
