@@ -1,42 +1,18 @@
 import { useCallback, useEffect, useState } from 'react'
 
 export const useMouseMove = () => {
-  const [isDraggingLeft, setIsDraggingLeft] = useState<boolean>(false)
   const [isDraggingRight, setIsDraggingRight] = useState<boolean>(false)
 
   const onMouseDown = (event: MouseEvent) => {
     if ((event.target as HTMLElement).id === 'handlerMarkdownAndPreview') {
       event.preventDefault()
       setIsDraggingRight(true)
-    } else if ((event.target as HTMLElement).id === 'handlerFilesNMarkdown') {
-      event.preventDefault()
-      setIsDraggingLeft(true)
     }
   }
 
   const onMouseMove = useCallback(
     (event: MouseEvent) => {
-      if (isDraggingLeft) {
-        event.preventDefault()
-        const handlerFilesNMarkdown = document.querySelector(
-          '#handlerFilesNMarkdown'
-        )
-        const container = handlerFilesNMarkdown?.parentElement
-        const filesElement = container?.querySelector('#files') as HTMLElement
-
-        const minWidth = 200
-        const maxWidth = window.innerWidth / 3.5
-
-        if (filesElement) {
-          filesElement.style.width =
-            (event.clientX > maxWidth
-              ? maxWidth
-              : Math.max(event.clientX, minWidth)) -
-            80 + // 80px is the size of the SideBar, so I needed to decrease from the onMouseMove hook
-            'px'
-          filesElement.style.flexGrow = '0'
-        }
-      } else if (isDraggingRight) {
+      if (isDraggingRight) {
         event.preventDefault()
         const handlerFilesNMarkdown = document.querySelector(
           '#handlerMarkdownAndPreview'
@@ -63,11 +39,10 @@ export const useMouseMove = () => {
         return false
       }
     },
-    [isDraggingLeft, isDraggingRight]
+    [isDraggingRight]
   )
 
   const onMouseUp = () => {
-    setIsDraggingLeft(false)
     setIsDraggingRight(false)
   }
 
