@@ -3,6 +3,7 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import { Post } from './types'
 import { postDirectory } from './index'
+import { arrayGroupBy, ArrayGroupedBy } from './arrayGroupBy'
 
 export const getFileNames = (): string[] | undefined => {
   if (fs.existsSync(postDirectory)) {
