@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import styles from '../styles/Mdx.module.css'
 
 interface MDXTextAreaProps {
   value: string
@@ -23,7 +22,7 @@ const MDXTextArea = ({ value, setValue }: MDXTextAreaProps) => {
       ref={inputRef}
       placeholder="Write your post content here..."
       value={value}
-      className={styles.mdxEditor}
+      className="flex-auto min-w-75 text-white text-md resize-none bg-editorGray p-5"
       onChange={(event) => setValue(event.currentTarget.value)}
       onKeyDown={handleTabKey}
     />
