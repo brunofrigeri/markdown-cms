@@ -1,28 +1,21 @@
 import React, { PropsWithChildren } from 'react'
-import NavBar from '../components/NavBar'
-import SideBar, { SideBarProps } from '../components/SideBar'
-import styles from '../styles/Mdx.module.css'
+import NavBar, { NavBarProps } from '../components/NavBar'
 
-interface ContainerProps extends PropsWithChildren {
-  shouldShowSidebar?: boolean
-  shouldShowNavbar?: boolean
-  sideBarProps?: SideBarProps
+interface ContainerProps extends PropsWithChildren, NavBarProps {
+  className?: string
 }
 
 const Container: React.FC<ContainerProps> = ({
-  shouldShowNavbar,
-  shouldShowSidebar,
   children,
-  sideBarProps,
+  className,
+  hasBackButton,
 }) => {
   return (
     <>
-      {shouldShowNavbar && <NavBar />}
+      <NavBar hasBackButton={hasBackButton} />
       <div
-        id="container"
-        className="h-screen relative flex flex-row overflow-hidden"
+        className={`flex flex-row min-h-screen max-h-screen ${className ?? ''}`}
       >
-        {shouldShowSidebar && <SideBar {...sideBarProps} />}
         {children}
       </div>
     </>

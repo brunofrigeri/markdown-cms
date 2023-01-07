@@ -1,12 +1,20 @@
 import Link from 'next/link'
 import React from 'react'
+import { FaArrowAltCircleLeft } from 'react-icons/fa'
 
-const NavBar = () => {
+export interface NavBarProps {
+  hasBackButton?: boolean
+}
+
+const NavBar = ({ hasBackButton = false }: NavBarProps) => {
   return (
-    <nav className="static flex justify-evenly items-center w-full h-10 bg-red">
-      <Link href="">Save as Draft</Link>
-      <Link href="">Publish</Link>
-    </nav>
+    <div className="fixed flex items-center top-0 w-full h-14 bg-gray-600 px-4 overflow-hidden">
+      {hasBackButton && (
+        <Link href="/">
+          <FaArrowAltCircleLeft size={28} color="white" />
+        </Link>
+      )}
+    </div>
   )
 }
 
