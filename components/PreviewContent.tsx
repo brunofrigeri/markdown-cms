@@ -28,7 +28,7 @@ const PreviewContent: React.FC<IPreviewContentProps> = ({ content }) => {
   return (
     <div
       id="preview"
-      className="flex-1 min-w-75 pt-5 px-5 min-h-screen max-h-screen overflow-y-auto whitespace-pre-wrap break-word bg-previewContentBg"
+      className="flex-1 min-w-75 pt-5 px-5 max-h-screen overflow-y-auto whitespace-pre-wrap break-word bg-previewContentBg"
     >
       <article
         className="prose text-black"
