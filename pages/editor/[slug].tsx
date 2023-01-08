@@ -27,7 +27,7 @@ const EditBySlug = ({ file }: EditBySlugProps) => {
   ]
 
   return (
-    <Container hasBackButton className="mt-14 pb-14">
+    <Container hasBackButton className="mt-14 pb-14 min-h-screen">
       <MDXTextArea value={file.content} setValue={() => {}} />
       <div id="handlerMarkdownAndPreview" className="w-1 cursor-ew-resize" />
       <PreviewContent content={file.content} />
