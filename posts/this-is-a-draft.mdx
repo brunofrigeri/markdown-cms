@@ -1,0 +1,30 @@
+---
+title: This is a Draft
+excerpt: I'm just writing a Draft
+date: 04/24/2021
+author: Bruno Frigeri
+draft: true
+---
+At some point, every developer need to fulfill the desire of some design work in a application to built a curved bottom tab. With me wasn't so difference, I cross this path once my design team asks for it, my major difficult was trying to understand how to do it.
+
+In this point I was searching and understanding two ways out: Doing with Views only (we can enter in this subject in another day) or using svg and d3-shape. Using just views is not easy but at the same time not some monster, but I found more easy and more clean building it with svg, so let's do it.
+
+## Getting Started
+
+First and formals we need to create a react native app:
+```bash
+npx react-native init myExample
+```
+
+ps: In my case you'll realize that I use typescript, but is not mandatory.
+
+Now we'll need to install all the react-navigation dependencies, at this tutorial I'll be using react-navigation v5, so you'll track easily to move with me in that version.
+
+Follow the react navigation [Documentation](https://reactnavigation.org/docs/getting-started/) to install all dependencies well
+
+```bash
+yarn add @react-navigation/native
+yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+yarn add @react-navigation/stack
+yarn add @react-navigation/bottom-tabs
+```

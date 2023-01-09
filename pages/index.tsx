@@ -12,7 +12,7 @@ interface IDashboardProps {
 
 const Dashboard = ({ posts = [] }: IDashboardProps) => {
   return (
-    <Container className="overflow-y-auto bg-white mt-14">
+    <Container className="overflow-y-auto bg-white mt-14 min-h-screen">
       <div className="flex-1 p-5">
         <div className="flex flex-row justify-between mb-4">
           <h1 className="text-black">Posts</h1>

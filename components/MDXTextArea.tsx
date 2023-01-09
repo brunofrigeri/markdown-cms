@@ -22,7 +22,7 @@ const MDXTextArea = ({ value, setValue }: MDXTextAreaProps) => {
       ref={inputRef}
       placeholder="Write your post content here..."
       value={value}
-      className="flex-auto min-w-75 text-white text-md resize-none bg-editorGray p-5"
+      className="flex-auto max-h-screen overflow-y-auto min-w-75 text-white text-md resize-none bg-editorGray p-5"
       onChange={(event) => setValue(event.currentTarget.value)}
       onKeyDown={handleTabKey}
     />
