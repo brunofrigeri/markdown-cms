@@ -9,6 +9,10 @@ require('prismjs/components/prism-css')
 require('prismjs/components/prism-jsx')
 require('prismjs/components/prism-tsx')
 
+/**
+ * TODO: @brunofrigeri - Add user ability to add whatever prism syntax highlight they want to.
+ */
+
 export const useLivePrism = (content: string) => {
   useEffect(() => {
     Prism.highlightAll()

@@ -9,10 +9,16 @@ const Container: React.FC<ContainerProps> = ({
   children,
   className,
   hasBackButton,
+  hasFrontMatterButton,
+  onFrontMatterButtonPress,
 }) => {
   return (
     <>
-      <NavBar hasBackButton={hasBackButton} />
+      <NavBar
+        hasBackButton={hasBackButton}
+        hasFrontMatterButton={hasFrontMatterButton}
+        onFrontMatterButtonPress={onFrontMatterButtonPress}
+      />
       <div
         className={`flex flex-row min-h-screen max-h-screen ${className ?? ''}`}
       >

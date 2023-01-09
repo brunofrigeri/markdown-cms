@@ -12,6 +12,7 @@ export const getPostBySlug = async (slug: string) => {
   const post = {
     content,
     date: data.date,
+    description: data.excerpt,
     slug,
     key: `${slug}.mdx`,
     type: Boolean(data?.draft) ? 'draft' : 'post',

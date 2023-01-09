@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import FloatButton, { Button } from '../../components/FloatButton'
 import MDXTextArea from '../../components/MDXTextArea'
 import PreviewContent from '../../components/PreviewContent'
@@ -9,12 +9,17 @@ import { getPostBySlug } from '../../helpers/getPostBySlug'
 import { Post } from '../../helpers/types'
 import { useMouseMove } from '../../hooks/useMouseMove'
 import { FaSave } from 'react-icons/fa'
+import FrontMatter from '../../components/FrontMatter'
 
 interface EditBySlugProps {
   file: Post
 }
 
 const EditBySlug = ({ file }: EditBySlugProps) => {
+  const [isFrontMatterVisible, setIsFrontMatterVisible] =
+    useState<boolean>(false)
+  const [hasChanges, setHasChanges] = useState<boolean>(false)
+
   useMouseMove()
 
   const buttonsOnFloat: Button[] = [
@@ -26,12 +31,28 @@ const EditBySlug = ({ file }: EditBySlugProps) => {
     },
   ]
 
+  useEffect(() => {
+    console.log(hasChanges)
+  }, [hasChanges])
+
   return (
-    <Container hasBackButton className="mt-14 pb-14 min-h-screen">
+    <Container
+      hasBackButton
+      hasFrontMatterButton
+      onFrontMatterButtonPress={() => setIsFrontMatterVisible(true)}
+      className="mt-14 pb-14 min-h-screen"
+    >
       <MDXTextArea value={file.content} setValue={() => {}} />
       <div id="handlerMarkdownAndPreview" className="w-1 cursor-ew-resize" />
       <PreviewContent content={file.content} />
 
+      <FrontMatter
+        file={file}
+        isVisible={isFrontMatterVisible}
+        setIsVisible={setIsFrontMatterVisible}
+        hasChanges={hasChanges}
+        setHasChanges={setHasChanges}
+      />
       <FloatButton buttons={buttonsOnFloat} />
     </Container>
   )

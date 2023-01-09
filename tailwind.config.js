@@ -22,6 +22,8 @@ module.exports = {
       gray: colors.gray,
       indigo: colors.indigo,
       pink: colors.pink,
+      standardGreen: colors.green,
+      standardPurple: colors.purple,
       red: '#FB3D62',
       yellow: '#D1A24E',
       blue: '#7096FF',

@@ -13,7 +13,7 @@ export const getFileNames = (): string[] | undefined => {
   }
 }
 
-export const getAllPosts = (): Post[] => {
+export const getAllPosts = (): ArrayGroupedBy<Post> => {
   if (fs.existsSync(postDirectory)) {
     const fileNames = getFileNames()
 
@@ -30,6 +30,7 @@ export const getAllPosts = (): Post[] => {
       const post = {
         content,
         date: data.date,
+        description: data.excerpt,
         slug: slug.replace('.mdx', ''),
         key: slug,
         type: Boolean(data?.draft) ? 'draft' : 'post',
@@ -39,12 +40,14 @@ export const getAllPosts = (): Post[] => {
       return post
     })
 
-    return filteredData.sort((a, b) => {
+    const sortedData = filteredData.sort((a, b) => {
       if (new Date(a.date) < new Date(b.date)) {
         return 1
       } else {
         return -1
       }
     })
+
+    return arrayGroupBy(sortedData, 'type')
   } else return []
 }
